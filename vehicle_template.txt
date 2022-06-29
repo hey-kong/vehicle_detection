@@ -7,8 +7,8 @@ perf-measurement-interval-sec=5
 enable=1
 rows=$rows
 columns=$columns
-width=1920
-height=1080
+width=1280
+height=720
 gpu-id=0
 #(0): nvbuf-mem-default - Default memory allocated, specific to particular platform
 #(1): nvbuf-mem-cuda-pinned - Allocate Pinned/Host cuda memory applicable for Tesla
@@ -27,9 +27,9 @@ type=4
 #1=h264 2=h265
 codec=1
 #encoder type 0=Hardware 1=Software
-enc-type=0
+enc-type=1
 sync=0
-bitrate=4000000
+bitrate=400000
 #H264 Profile - 0=Baseline 2=Main 4=High
 #H265 Profile - 0=Main 1=Main10
 profile=0
@@ -110,7 +110,7 @@ display-tracking-id=1
 enable=1
 model-engine-file=../../models/Secondary_VehicleTypes/resnet18.caffemodel_b16_gpu0_int8.engine
 gpu-id=0
-batch-size=$big_batch
+batch-size=$batch
 gie-unique-id=4
 operate-on-gie-id=1
 operate-on-class-ids=0;
@@ -119,7 +119,7 @@ config-file=config_infer_secondary_vehicletypes.txt
 [secondary-gie1]
 enable=1
 model-engine-file=../../models/Secondary_CarColor/resnet18.caffemodel_b16_gpu0_int8.engine
-batch-size=$big_batch
+batch-size=$batch
 gpu-id=0
 gie-unique-id=5
 operate-on-gie-id=1
@@ -129,7 +129,7 @@ config-file=config_infer_secondary_carcolor.txt
 [secondary-gie2]
 enable=1
 model-engine-file=../../models/Secondary_CarMake/resnet18.caffemodel_b16_gpu0_int8.engine
-batch-size=$big_batch
+batch-size=$batch
 gpu-id=0
 gie-unique-id=6
 operate-on-gie-id=1

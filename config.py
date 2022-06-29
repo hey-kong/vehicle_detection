@@ -36,13 +36,10 @@ def gen_config(rows, columns, sources, urls):
     col_val = str(columns)
     batch = r'\$batch'
     batch_val = str(sources)
-    big_batch = r'\$big_batch'
-    big_batch_val = str(sources*4)
     for line in vehicle_template.readlines():
         line = re.sub(row, row_val, line)
         line = re.sub(col, col_val, line)
         line = re.sub(batch, batch_val, line)
-        line = re.sub(big_batch, big_batch_val, line)
         vehicle.write(line)
     vehicle_template.close()
     vehicle.seek(0)
