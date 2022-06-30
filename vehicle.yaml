@@ -19,20 +19,20 @@ spec:
       hostNetwork: true
       containers:
       - name: vehicle-test
-        image: pdsl-registry.cn-shenzhen.cr.aliyuncs.com/jetson/deepstream-l4t:vehicle-v1.0
+        image: pdsl-registry.cn-shenzhen.cr.aliyuncs.com/jetson/deepstream-l4t:vehicle-v1.1
         imagePullPolicy: IfNotPresent
         env:
+          - name: "DISPLAY"
+            value: ":1"
           - name: "rows"
             value: "2"
           - name: "columns"
             value: "2"
           - name: "sources"
-            value: "4"
+            value: "2"
           - name: "rtsp_urls"
-            value: "rtsp://admin:12345678a@192.168.1.102:554/h264/ch1/main/av_stream,
-                    rtsp://admin:12345678a@192.168.1.102:554/h264/ch1/main/av_stream,
-                    rtsp://admin:12345678a@192.168.1.102:554/h264/ch1/main/av_stream,
-                    rtsp://admin:12345678a@192.168.1.102:554/h264/ch1/main/av_stream"
+            value: "rtsp://admin:12345678a@192.168.1.110:554/h264/ch1/main/av_stream,
+                    rtsp://admin:12345678a@192.168.1.111:554/h264/ch1/main/av_stream"
         volumeMounts:
           - name: tmp
             mountPath: /tmp/

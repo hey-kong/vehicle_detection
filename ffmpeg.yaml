@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ffmpeg-rtsp
+  namespace: jetson
+  labels:
+    app: ffmpeg
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ffmpeg
+  template:
+    metadata:
+      labels:
+        app: ffmpeg
+    spec:
+      nodeName: edge.xavier
+      hostNetwork: true
+      containers:
+      - name: ffmpeg-rtsp
+        image: pdsl-registry.cn-shenzhen.cr.aliyuncs.com/jetson/ffmpeg:v1.0
+        imagePullPolicy: IfNotPresent
+        command: [ "/bin/sh","-c","ffmpeg -re -rtsp_transport tcp -i rtsp://localhost:8554/ds-test -c:v copy -b:v 400K -c:a copy -f flv rtmp://47.107.112.135:9202/test552" ]
