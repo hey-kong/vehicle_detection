@@ -37,6 +37,21 @@ profile=0
 rtsp-port=8554
 udp-port=5400
 
+[sink1]
+enable=1
+#Type - 1=FakeSink 2=EglSink 3=File 4=UDPSink 5=nvoverlaysink 6=MsgConvBroker
+type=6
+msg-conv-config=msgconv.txt
+#(0): PAYLOAD_DEEPSTREAM - Deepstream schema payload
+#(1): PAYLOAD_DEEPSTREAM_MINIMAL - Deepstream schema payload minimal
+#(256): PAYLOAD_RESERVED - Reserved type
+#(257): PAYLOAD_CUSTOM   - Custom schema payload
+msg-conv-payload-type=1
+msg-broker-proto-lib=/opt/nvidia/deepstream/deepstream-6.0/lib/libnvds_kafka_proto.so
+#Provide your msg-broker-conn-str here
+msg-broker-conn-str=$host;$port;$topic
+topic=$topic
+
 [osd]
 enable=1
 gpu-id=0
@@ -79,6 +94,7 @@ nvbuf-memory-type=0
 enable=1
 gpu-id=0
 model-engine-file=../../models/Primary_Detector/resnet10.caffemodel_b4_gpu0_int8.engine
+labelfile-path=../../models/Primary_Detector/labels.txt
 batch-size=$batch
 #Required by the app for OSD, not a plugin property
 bbox-border-color0=1;0;0;1

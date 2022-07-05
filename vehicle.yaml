@@ -30,10 +30,18 @@ spec:
             value: "2"
           - name: "sources"
             value: "3"
+          - name: "rtsp_ids"
+            value: "rtsp0, rtsp1, rtsp2"
           - name: "rtsp_urls"
-            value: "rtsp://admin:12345678a@192.168.1.110:554/h264/ch1/main/av_stream,
-                    rtsp://admin:12345678a@192.168.1.111:554/h264/ch1/main/av_stream,
-                    rtsp://admin:12345678a@192.168.1.112:554/h264/ch1/main/av_stream"
+            value: "rtsp://admin:12345678a@192.168.1.158:554/h264/ch1/main/av_stream,
+                    rtsp://admin:12345678a@192.168.1.159:554/h264/ch1/main/av_stream,
+                    rtsp://admin:12345678a@192.168.1.160:554/h264/ch1/main/av_stream"
+          - name: "host"
+            value: "kafka"
+          - name: "port"
+            value: "9092"
+          - name: "topic"
+            value: "test"
         volumeMounts:
           - name: tmp
             mountPath: /tmp/
