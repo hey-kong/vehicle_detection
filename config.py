@@ -107,11 +107,11 @@ if __name__ == "__main__":
     sources = int(os.environ.get("sources"))
     ids = str(os.environ.get("rtsp_ids")).split(',')
     urls = str(os.environ.get("rtsp_urls")).split(',')
-    host = int(os.environ.get("host"))
+    host = str(os.environ.get("host"))
     port = int(os.environ.get("port"))
-    topic = int(os.environ.get("topic"))
+    topic = str(os.environ.get("topic"))
     # vehicle.txt
     gen_vehicle_config(rows, columns, sources, urls, host, port, topic)
     # msgconv.txt
     gen_msgconv_config(sources, ids)
-    os.system('deepstream-app -c vehicle.txt')
+    os.system('deepstream-test5-app -c vehicle.txt')
