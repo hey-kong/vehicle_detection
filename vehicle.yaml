@@ -19,7 +19,7 @@ spec:
       hostNetwork: true
       containers:
       - name: vehicle-test
-        image: pdsl-registry.cn-shenzhen.cr.aliyuncs.com/jetson/deepstream-l4t:vehicle-v1.1
+        image: pdsl-registry.cn-shenzhen.cr.aliyuncs.com/jetson/deepstream-l4t:vehicle-v1.2
         imagePullPolicy: IfNotPresent
         env:
           - name: "DISPLAY"
