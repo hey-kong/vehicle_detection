@@ -23,7 +23,7 @@ sensor_template = [
     'enable=1\n',
     'type=Camera\n'
     'id=$rtsp_id\n',
-    'description=Vehicle Detection and License Plate Recognition\n',
+    'description=Vehicle Detection\n',
     '#location=\n',
     '#coordinate=\n'
 ]
@@ -54,25 +54,25 @@ def gen_sensor(sources, ids):
 def gen_vehicle_config(rows, columns, sources, urls, host, port, topic):
     vehicle_template = open(vehicle_template_path, 'r')
     vehicle = open(vehicle_config_path, 'w+')
-    row = r'\$rows'
+    rrow = r'\$rows'
     row_val = str(rows)
-    col = r'\$columns'
+    rcol = r'\$columns'
     col_val = str(columns)
-    batch = r'\$batch'
+    rbatch = r'\$batch'
     batch_val = str(sources)
-    host = r'\$host'
+    rhost = r'\$host'
     host_val = str(host)
-    port = r'\$port'
+    rport = r'\$port'
     port_val = str(port)
-    topic = r'\$topic'
+    rtopic = r'\$topic'
     topic_val = str(topic)
     for line in vehicle_template.readlines():
-        line = re.sub(row, row_val, line)
-        line = re.sub(col, col_val, line)
-        line = re.sub(batch, batch_val, line)
-        line = re.sub(host, host_val, line)
-        line = re.sub(port, port_val, line)
-        line = re.sub(topic, topic_val, line)
+        line = re.sub(rrow, row_val, line)
+        line = re.sub(rcol, col_val, line)
+        line = re.sub(rbatch, batch_val, line)
+        line = re.sub(rhost, host_val, line)
+        line = re.sub(rport, port_val, line)
+        line = re.sub(rtopic, topic_val, line)
         vehicle.write(line)
     vehicle_template.close()
     vehicle.seek(0)
