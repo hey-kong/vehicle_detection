@@ -132,25 +132,5 @@ operate-on-gie-id=1
 operate-on-class-ids=0;
 config-file=config_infer_secondary_vehicletypes.txt
 
-[secondary-gie1]
-enable=1
-model-engine-file=../../models/Secondary_CarColor/resnet18.caffemodel_b16_gpu0_int8.engine
-batch-size=$batch
-gpu-id=0
-gie-unique-id=5
-operate-on-gie-id=1
-operate-on-class-ids=0;
-config-file=config_infer_secondary_carcolor.txt
-
-[secondary-gie2]
-enable=1
-model-engine-file=../../models/Secondary_CarMake/resnet18.caffemodel_b16_gpu0_int8.engine
-batch-size=$batch
-gpu-id=0
-gie-unique-id=6
-operate-on-gie-id=1
-operate-on-class-ids=0;
-config-file=config_infer_secondary_carmake.txt
-
 [tests]
 file-loop=0
