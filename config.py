@@ -51,7 +51,7 @@ def gen_sensor(sources, ids):
     return sensor_config
 
 
-def gen_vehicle_config(rows, columns, sources, urls, host, port, topic):
+def gen_vehicle_config(rows, columns, sources, urls, host, port, topic, bitrate):
     vehicle_template = open(vehicle_template_path, 'r')
     vehicle = open(vehicle_config_path, 'w+')
     rrow = r'\$rows'
@@ -66,6 +66,8 @@ def gen_vehicle_config(rows, columns, sources, urls, host, port, topic):
     port_val = str(port)
     rtopic = r'\$topic'
     topic_val = str(topic)
+    rbitrate = r'\$bitrate'
+    bitrate_val = str(bitrate)
     for line in vehicle_template.readlines():
         line = re.sub(rrow, row_val, line)
         line = re.sub(rcol, col_val, line)
@@ -73,6 +75,7 @@ def gen_vehicle_config(rows, columns, sources, urls, host, port, topic):
         line = re.sub(rhost, host_val, line)
         line = re.sub(rport, port_val, line)
         line = re.sub(rtopic, topic_val, line)
+        line = re.sub(rbitrate, bitrate_val, line)
         vehicle.write(line)
     vehicle_template.close()
     vehicle.seek(0)
@@ -110,8 +113,9 @@ if __name__ == "__main__":
     host = str(os.environ.get("host"))
     port = int(os.environ.get("port"))
     topic = str(os.environ.get("topic"))
+    bitrate = int(os.environ.get("bitrate"))
     # vehicle.txt
-    gen_vehicle_config(rows, columns, sources, urls, host, port, topic)
+    gen_vehicle_config(rows, columns, sources, urls, host, port, topic, bitrate)
     # msgconv.txt
     gen_msgconv_config(sources, ids)
     os.system('deepstream-test5-app -c vehicle.txt')

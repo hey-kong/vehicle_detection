@@ -19,11 +19,13 @@ spec:
       hostNetwork: true
       containers:
       - name: vehicle-test
-        image: pdsl-registry.cn-shenzhen.cr.aliyuncs.com/jetson/deepstream-l4t:vehicle-v1.2
+        image: pdsl-registry.cn-shenzhen.cr.aliyuncs.com/jetson/deepstream-l4t:vehicle-v1.3
         imagePullPolicy: IfNotPresent
         env:
           - name: "DISPLAY"
             value: ":1"
+          - name: "bitrate"
+            value: "400000"
           - name: "rows"
             value: "2"
           - name: "columns"
@@ -33,9 +35,9 @@ spec:
           - name: "rtsp_ids"
             value: "rtsp0, rtsp1, rtsp2"
           - name: "rtsp_urls"
-            value: "rtsp://admin:12345678a@192.168.1.158:554/h264/ch1/main/av_stream,
-                    rtsp://admin:12345678a@192.168.1.159:554/h264/ch1/main/av_stream,
-                    rtsp://admin:12345678a@192.168.1.160:554/h264/ch1/main/av_stream"
+            value: "rtsp://admin:12345678a@192.168.1.164:554/h264/ch1/main/av_stream,
+                    rtsp://admin:12345678a@192.168.1.167:554/h264/ch1/main/av_stream,
+                    rtsp://admin:12345678a@192.168.1.168:554/h264/ch1/main/av_stream"
           - name: "host"
             value: "kafka"
           - name: "port"
