@@ -25,7 +25,7 @@ spec:
           - name: "DISPLAY"
             value: ":1"
           - name: "bitrate"
-            value: "400000"
+            value: "1000000"
           - name: "rows"
             value: "2"
           - name: "columns"
